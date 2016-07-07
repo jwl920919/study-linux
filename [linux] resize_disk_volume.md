@@ -2,7 +2,7 @@
 
   * Partition 정보 확인
 ```
-fdisk -l
+$ fdisk -l
 
 Disk /dev/sda: 107.4 GB, 107374182400 bytes, 209715200 sectors
 Units = sectors of 1 * 512 = 512 bytes
@@ -27,7 +27,7 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 ```
 
 ```
-df -h
+$ df -h
 
 Filesystem               Size  Used Avail Use% Mounted on
 /dev/mapper/centos-root   28G  2.8G   25G  11% /
@@ -44,7 +44,7 @@ tmpfs                    186M     0  186M   0% /run/user/0
 
  * fdisk 접속
 ```
-fdisk /dev/sda
+$ fdisk /dev/sda
 ```
  * 신규 Partition 추가
 ```
@@ -95,7 +95,7 @@ Command (m for help):
 
  * Partition 생성 확인
 ```
-fdisk -l
+$ fdisk -l
 ```
 ```
 Disk /dev/sda: 107.4 GB, 107374182400 bytes, 209715200 sectors
@@ -124,26 +124,26 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 
  * 시스템 Rebooting
 ```
-shutdown -r now
+$ shutdown -r now
 ```
 
  * Phsical Volume 생성
 
 ```
-pvscan
+$ pvscan
 
   PV /dev/sda2   VG centos   lvm2 [29.51 GiB / 44.00 MiB free]
   Total: 1 [29.51 GiB] / in use: 1 [29.51 GiB] / in no VG: 0 [0   ]
 ```
 
 ```
-pvcreate /dev/sda3
+$ pvcreate /dev/sda3
 
   Physical volume "/dev/sda3" successfully created
 ```
 
 ```
-pvscan
+$ pvscan
 
   PV /dev/sda2   VG centos   lvm2 [29.51 GiB / 44.00 MiB free]
   PV /dev/sda3               lvm2 [70.00 GiB]
@@ -152,7 +152,7 @@ pvscan
 
  * pvdisplay
 ```
-pvdisplay
+$ pvdisplay
 
   --- Physical volume ---
   PV Name               /dev/sda2
@@ -181,7 +181,7 @@ pvdisplay
  * Volume Group 확장 (vgextend)
 
 ```
-vgextend centos /dev/sda3
+$ vgextend centos /dev/sda3
 
   Volume group "centos" successfully extended
 ```
@@ -189,6 +189,8 @@ vgextend centos /dev/sda3
  * vgdisplay
 
 ```
+$ vgdisplay
+
   --- Volume group ---
   VG Name               centos
   System ID             
@@ -216,14 +218,14 @@ vgextend centos /dev/sda3
  * Logical 파티션 확장
 
 ```
-lvextend /dev/centos/root -l +17930
+$ lvextend /dev/centos/root -l +17930
 
   Size of logical volume centos/root changed from 27.46 GiB (7031 extents) to 70.04 GiB (17930 extents).
   Logical volume root successfully resized.
 ```
 
 ```
-vgdisplay
+$ vgdisplay
 
   --- Volume group ---
   VG Name               centos
@@ -254,9 +256,9 @@ vgdisplay
  * 파일 시스템 확장 반영 (xfs_growfs 또는 resize2fs)
 
 ```
-xfs_growfs /dev/centos/root
+$ xfs_growfs /dev/centos/root
 ```
 또는
 ```
-resize2fs /dev/centos/root
+$ resize2fs /dev/centos/root
 ```
