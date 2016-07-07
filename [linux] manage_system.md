@@ -1,12 +1,13 @@
 # 시스템 관리 (CentOS7)
 
+#### 폴더 및 파일 크기 순으로
 
-#### 시스템 관련
+  * 폴더 및 파일 크기 순으로 Top 10
+```
+du -a | sort -n -r | head -n 10
+```
 
-  * 폴더 및 파일 크기 순으로 Top 20
-```
-du -a | sort -n -r | head -n 20
-```
+==========================================
 
 #### 대기 모드 진입 방지
 
@@ -20,6 +21,8 @@ vi /etc/systemd/logind.conf
   #HandleLidSwitchDocked=ignore
   ==> HandleLidSwitchDocked=ignore
 ```
+
+==========================================
 
 ### WOL 설정
 
@@ -42,3 +45,5 @@ vi /etc/sysconfig/network-scripts/ifcfg-eth0
   (마지막 라인에)
   ETHTOOL_OPTS="wol g"  ==> 추가
 ```
+
+==========================================
