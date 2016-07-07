@@ -6,3 +6,13 @@
 ```
 du -a | sort -n -r | head -n 20
 ```
+
+#### 노트북 덮기  대기 모드 진입 방지
+
+vi /etc/systemd/logind.conf
+
+#HandleLidSwitch=suspend  
+==> HandleLidSwitch=ignore
+
+#HandleLidSwitchDocked=ignore
+==> HandleLidSwitchDocked=ignore
