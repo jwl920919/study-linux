@@ -15,11 +15,11 @@ du -a | sort -n -r | head -n 10
 ```
 vi /etc/systemd/logind.conf
 
-  #HandleLidSwitch=suspend  
-  ==> HandleLidSwitch=ignore
+ #HandleLidSwitch=suspend  
+ ==> HandleLidSwitch=ignore
 
-  #HandleLidSwitchDocked=ignore
-  ==> HandleLidSwitchDocked=ignore
+ #HandleLidSwitchDocked=ignore
+ ==> HandleLidSwitchDocked=ignore
 ```
 
 ==========================================
@@ -34,16 +34,16 @@ ethtool -s eth0 wol g
   * WOL 확인
 ```
 ethtool eth0 | grep Wake-on
-
-  Wake-on: g    ==> g 확인
+ ...
+ Wake-on: g    ==> g 확인
 ```
 
   * ifcfg에 WOL 옵션 추가
 ```
 vi /etc/sysconfig/network-scripts/ifcfg-eth0
   
-  (마지막 라인에)
-  ETHTOOL_OPTS="wol g"  ==> 추가
+  ...
+  ETHTOOL_OPTS="wol g"  ==> 마지막 라인에 추가
 ```
 
 ==========================================
