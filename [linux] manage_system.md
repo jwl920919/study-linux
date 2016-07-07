@@ -1,3 +1,5 @@
+[Back](https://github.com/songagi/study-linux/blob/master/README.md)
+
 # 시스템 관리 (CentOS7)
 
 #### 폴더 및 파일 크기 순으로
@@ -47,3 +49,5 @@ vi /etc/sysconfig/network-scripts/ifcfg-eth0
 ```
 
 ==========================================
+
+[Back](https://github.com/songagi/study-linux/blob/master/README.md)
