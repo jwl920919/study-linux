@@ -35,14 +35,14 @@ tmpfs                    186M     0  186M   0% /run/user/0
 
 ========================================================
 
-#### fdisk로 partition 생성
+#### 신규 Partition 생성
 
  * fdisk 접속 (/dev/sda)
 ```
 $ fdisk /dev/sda
 ```
 
- * 신규 Partition 추가
+ * Partition 추가
 ```
 [신규 파티션 추가]
 Command (m for help):
@@ -89,7 +89,7 @@ Command (m for help):
 > w 입력 (Write)
 ```
 
- * Partition 생성 확인
+ * Partition 생성 확인 (/dev/sda3 - Linux LVM)
 ```
 $ fdisk -l
 ```
@@ -101,9 +101,6 @@ $ fdisk -l
 /dev/sda3        62914560   209715199    73400320   8e  Linux LVM
 ...
 ```
-
- --> /dev/sda3 - Linux LVM 생성 확인
-
 
  * 시스템 Rebooting
 ```
