@@ -1,6 +1,8 @@
 [Back](https://github.com/songagi/study-linux/blob/master/README.md)
 
-# partition 확장 (Centos7)
+# Partition 확장 (Centos7)
+
+========================================================
 
   * Partition 정보 확인
 ```
@@ -28,6 +30,7 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 ```
 
+* Mount된 용량 확인
 ```
 $ df -h
 
@@ -41,13 +44,16 @@ tmpfs                    927M     0  927M   0% /sys/fs/cgroup
 tmpfs                    186M     0  186M   0% /run/user/0
 ```
 
- * 30G --> 100G 확장 (70G free 공간)
+ (테스트 환경) 기존 30G --> 100G로 확장
 
 
- * fdisk 접속
+========================================================
+
+ * fdisk 접속 (/dev/sda)
 ```
 $ fdisk /dev/sda
 ```
+
  * 신규 Partition 추가
 ```
 [신규 파티션 추가]
@@ -80,7 +86,7 @@ Command (m for help):
 /dev/sda2         1026048    62914559    30944256   8e  Linux LVM
 /dev/sda3        62914560   209715199    73400320   83  Linux
 
-[파티션 Type 변경 - Linux LVM]
+[Type 변경 - Linux LVM]
 
 Command (m for help): 
 >> t
@@ -89,7 +95,7 @@ Partition number (1-4):
 >> 3
 
 Hex code (type L to list codes):
->> 8e 입력  (Linux LVM)
+>> 8e 입력  (8e: Linux LVM)
 
 Command (m for help):
 > w 입력 (Write)
@@ -100,37 +106,27 @@ Command (m for help):
 $ fdisk -l
 ```
 ```
-Disk /dev/sda: 107.4 GB, 107374182400 bytes, 209715200 sectors
-Units = sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disk label type: dos
-Disk identifier: 0x00037f94
-
+...
    Device Boot      Start         End      Blocks   Id  System
 /dev/sda1   *        2048     1026047      512000   83  Linux
 /dev/sda2         1026048    62914559    30944256   8e  Linux LVM
 /dev/sda3        62914560   209715199    73400320   8e  Linux LVM
-
-Disk /dev/mapper/centos-root: 29.5 GB, 29490151424 bytes, 57597952 sectors
-Units = sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-
-
-Disk /dev/mapper/centos-swap: 2147 MB, 2147483648 bytes, 4194304 sectors
-Units = sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
+...
 ```
+
+ --> /dev/sda3 - Linux LVM 생성 확인
+
 
  * 시스템 Rebooting
 ```
 $ shutdown -r now
 ```
 
+========================================================
+
  * Phsical Volume 생성
 
+ - 확인 전
 ```
 $ pvscan
 
@@ -138,12 +134,14 @@ $ pvscan
   Total: 1 [29.51 GiB] / in use: 1 [29.51 GiB] / in no VG: 0 [0   ]
 ```
 
+ - 생성
 ```
 $ pvcreate /dev/sda3
 
   Physical volume "/dev/sda3" successfully created
 ```
 
+ - 생성 후 확인 (PV /dev/sda3)
 ```
 $ pvscan
 
@@ -152,7 +150,7 @@ $ pvscan
   Total: 2 [99.51 GiB] / in use: 1 [29.51 GiB] / in no VG: 1 [70.00 GiB]
 ```
 
- * pvdisplay
+ * VG Name 확인 ( VG Name = centos, New VG Name = 없음 )
 ```
 $ pvdisplay
 
@@ -180,7 +178,7 @@ $ pvdisplay
   PV UUID               UTmbVI-zMO2-BJlz-diXd-0b2A-nC4j-ABMaEg
 ```
 
- * Volume Group 확장 (vgextend)
+ * Volume Group을 하나로 확장 (vgextend)
 
 ```
 $ vgextend centos /dev/sda3
@@ -188,7 +186,7 @@ $ vgextend centos /dev/sda3
   Volume group "centos" successfully extended
 ```
 
- * vgdisplay
+ * vgdisplay (VG가 하나로 합쳐짐)
 
 ```
 $ vgdisplay
@@ -215,7 +213,8 @@ $ vgdisplay
   VG UUID               4QECzt-30dd-WvkG-PFoM-U1Pa-SOQ6-vLpL3L
 ```
  
- --> FREE PE 생김 (Free PE = 17930)
+ --> 합쳐진 후, FREE PE 생김 (Free PE = 17930)
+ 
  
  * Logical 파티션 확장
 
@@ -254,6 +253,7 @@ $ vgdisplay
  --> Alloc 공간이 늘어나고, Free 공간이 0으로 바뀜.
  
  
+========================================================
  
  * 파일 시스템 확장 반영 (xfs_growfs 또는 resize2fs)
 
