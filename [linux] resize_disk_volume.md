@@ -1,4 +1,4 @@
-# (작업 중) Disk partition volume 확장 (Centos7)
+# partition 확장 (Centos7)
 
   * Partition 정보 확인
 ```
