@@ -205,7 +205,7 @@ $ vgdisplay
  --> 합쳐진 후, FREE PE 생김 (Free PE = 17930)
  
  
- #### Logical Volume 확장
+#### Logical Volume 확장
  
  * lvextend /dev/{VG-Name}/{LV-Name} -l +{확장 용량}
 
