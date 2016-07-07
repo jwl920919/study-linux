@@ -1,6 +1,6 @@
 [Back](https://github.com/songagi/study-linux/blob/master/README.md)
 
-# Partition 확장 (Centos7)
+# Partition Volume 확장 방법 (Centos7)
 
 #### Partition 정보 확인
 
