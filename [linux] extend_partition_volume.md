@@ -1,3 +1,5 @@
+[Back](https://github.com/songagi/study-linux/blob/master/README.md)
+
 # partition 확장 (Centos7)
 
   * Partition 정보 확인
@@ -262,3 +264,5 @@ $ xfs_growfs /dev/centos/root
 ```
 $ resize2fs /dev/centos/root
 ```
+
+[Back](https://github.com/songagi/study-linux/blob/master/README.md)
