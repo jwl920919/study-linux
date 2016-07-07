@@ -7,7 +7,7 @@
 du -a | sort -n -r | head -n 20
 ```
 
-#### 노트북 덮기  대기 모드 진입 방지
+#### 노트북 덮을 때 대기모드 진입 방지
 
 ```
 vi /etc/systemd/logind.conf
