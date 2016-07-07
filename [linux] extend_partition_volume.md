@@ -8,26 +8,12 @@
 ```
 $ fdisk -l
 
-Disk /dev/sda: 107.4 GB, 107374182400 bytes, 209715200 sectors
-Units = sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disk label type: dos
-Disk identifier: 0x00037f94
-
+ Disk /dev/sda: 107.4 GB, 107374182400 bytes, 209715200 sectors
+ ...
    Device Boot      Start         End      Blocks   Id  System
-/dev/sda1   *        2048     1026047      512000   83  Linux
-/dev/sda2         1026048    62914559    30944256   8e  Linux LVM
-
-Disk /dev/mapper/centos-root: 29.5 GB, 29490151424 bytes, 57597952 sectors
-Units = sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-
-Disk /dev/mapper/centos-swap: 2147 MB, 2147483648 bytes, 4194304 sectors
-Units = sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
+ /dev/sda1   *        2048     1026047      512000   83  Linux
+ /dev/sda2         1026048    62914559    30944256   8e  Linux LVM
+...
 ```
 
 * Mount된 용량 확인
@@ -44,10 +30,12 @@ tmpfs                    927M     0  927M   0% /sys/fs/cgroup
 tmpfs                    186M     0  186M   0% /run/user/0
 ```
 
- (테스트 환경) 기존 30G --> 100G로 확장
+ (테스트 환경) 기존 30G --> 100G로 확장 (70G 공간 free 상태)
 
 
 ========================================================
+
+
 
  * fdisk 접속 (/dev/sda)
 ```
