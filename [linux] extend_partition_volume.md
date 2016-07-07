@@ -4,7 +4,9 @@
 
 ========================================================
 
-  * Partition 정보 확인
+#### Partition 정보 확인
+
+ * 현재 partition 정보 확인
 ```
 $ fdisk -l
 
@@ -16,7 +18,7 @@ $ fdisk -l
 ...
 ```
 
-* Mount된 용량 확인
+* Mount된 실제 용량 확인
 ```
 $ df -h
 
@@ -30,12 +32,12 @@ tmpfs                    927M     0  927M   0% /sys/fs/cgroup
 tmpfs                    186M     0  186M   0% /run/user/0
 ```
 
- (테스트 환경) 기존 30G --> 100G로 확장 (70G 공간 free 상태)
+ 기존 30G --> 100G로 확장 가능 (70G free 상태)
 
 
 ========================================================
 
-
+#### fdisk로 partition 생성
 
  * fdisk 접속 (/dev/sda)
 ```
@@ -112,6 +114,8 @@ $ shutdown -r now
 
 ========================================================
 
+#### Physical Volumne 생성
+
  * Phsical Volume 생성
 
  - 확인 전
@@ -138,7 +142,9 @@ $ pvscan
   Total: 2 [99.51 GiB] / in use: 1 [29.51 GiB] / in no VG: 1 [70.00 GiB]
 ```
 
- * VG Name 확인 ( VG Name = centos, New VG Name = 없음 )
+#### Volumne Group 확장
+
+ * VG 정보 확인 ( VG Name = centos, New VG Name = 없음 )
 ```
 $ pvdisplay
 
@@ -204,7 +210,9 @@ $ vgdisplay
  --> 합쳐진 후, FREE PE 생김 (Free PE = 17930)
  
  
- * Logical 파티션 확장
+ #### Logical Volume 확장
+ 
+ * lvextend /dev/{VG-Name}/{LV-Name} -l +{확장 용량}
 
 ```
 $ lvextend /dev/centos/root -l +17930
@@ -243,7 +251,9 @@ $ vgdisplay
  
 ========================================================
  
- * 파일 시스템 확장 반영 (xfs_growfs 또는 resize2fs)
+#### 파일 시스템 확장 적용
+ 
+ * xfs_growfs 또는 resize2fs 이용
 
 ```
 $ xfs_growfs /dev/centos/root
