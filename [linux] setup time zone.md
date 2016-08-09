@@ -1,3 +1,5 @@
+[Back](https://github.com/songagi/study-linux/blob/master/README.md)
+
 # TimeZone 설정
 
 ### TimeZone 변경
@@ -10,3 +12,5 @@ ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 ```
 date
 ```
+
+[Back](https://github.com/songagi/study-linux/blob/master/README.md)
