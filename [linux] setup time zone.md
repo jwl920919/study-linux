@@ -5,6 +5,7 @@
 ### TimeZone 변경
 ```
 rm /etc/localtime
+
 ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 ```
 
