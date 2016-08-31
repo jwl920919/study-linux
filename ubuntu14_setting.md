@@ -2,86 +2,86 @@
 
 ### 1. Default Setting
 
- ```
- sudo apt-get update
- sudo apt-get upgrade
- sudo apt-get install vim git wget curl ssh
- ```
- ```
- # register ssh key on Github
- # install chrome dropbox
- ```
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install vim git wget curl ssh
+```
+```
+# register ssh key on Github
+# install chrome dropbox
+```
 
 ### 2. Apperarance Seiing
 
- - Font
- ```
- sudo apt-get install unity-tweek-tool
- ```
+- Font
+```
+sudo apt-get install unity-tweek-tool
+```
  
- - Appearance Setting
- ```
- enable workspace
- autoi hide launcher on
- launcher icon size : 40
- ```
+- Appearance Setting
+```
+enable workspace
+autoi hide launcher on
+launcher icon size : 40
+```
 
 - Brighteness & Lock
- ```
- Turn screen off when inactive for : 10 minutes
- ```
+```
+Turn screen off when inactive for : 10 minutes
+```
 
- - Shell : ZSH
- ```
- sudo apt-get install zsh
- curl -L http://install.ohmyz.sh | sh
- ```
+- Shell : ZSH
+```
+sudo apt-get install zsh
+curl -L http://install.ohmyz.sh | sh
+```
 
- - Solazied Terminal
- ```
- wget --no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi-dark
- mv dircolors.ansi-dark .dircolors
+- Solazied Terminal
+```
+wget --no-check-certificate https://raw.github.com/seebi/dircolors-solarized/master/dircolors.ansi-dark
+mv dircolors.ansi-dark .dircolors
 
- git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
- cd gnome-terminal-colors-solarized
- ./set_dark.sh
+git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git
+cd gnome-terminal-colors-solarized
+./set_dark.sh
 
- # add this line into your .zshrc
- # eval `dircolors ~/.dircolors`
- ```
+# add this line into your .zshrc
+# eval `dircolors ~/.dircolors`
+```
 
 ### 3. Key
 
- - Default Key Configuration
- ```
- super + del -> gnome-system-monitor (Custom)
- super + e -> Home Folder (in Launchers)
- shift + alt + d -> hud (in Launchers)
- right alt -> compose key (in Typing)
- Use compose key as input source switcher (in Typing)
- ```
-
- - Capslock as ESC
- ```
- $ sudo apt-get install gnome-tweak-tool
- gnome-tweak-tool > Typing > Make Caps Lock an additional ESC
+- Default Key Configuration
+```
+super + del -> gnome-system-monitor (Custom)
+super + e -> Home Folder (in Launchers)
+shift + alt + d -> hud (in Launchers)
+right alt -> compose key (in Typing)
+Use compose key as input source switcher (in Typing)
 ```
 
- #### 4. Korean
+- Capslock as ESC
+```
+$ sudo apt-get install gnome-tweak-tool
+gnome-tweak-tool > Typing > Make Caps Lock an additional ESC
+```
+
+#### 4. Korean
 
 ```
 Language Supoort -> install Korean
 Text Entry -> add Korean(Hangul) in Input source 
 ```
 
- - 한글 짤림 문제 (Optional)
+- 한글 짤림 문제 (Optional)
 ```
 sudo add-apt-repository -y ppa:jincreator/freetype && sudo apt update && sudo apt install -y libfreetype6
 ```
 
 #### 5. Development Environment
 
- - Node.js
+- Node.js
  ```
  $ sudo add-apt-repository ppa:chris-lea/node.js
  $ sudo apt-get update
