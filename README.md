@@ -7,4 +7,4 @@
 
   [3. TimeZone 변경](https://github.com/songagi/study-linux/blob/master/%5Blinux%5D%20setup%20time%20zone.md)
 
-  [참고 Unbuntu Setting](study-linux/[ubuntu] ubuntu14_setting.md)
+  [참고 Unbuntu Setting](https://github.com/songagi/study-linux/blob/master/%5Bubuntu%5D%20ubuntu14_setting.md)
