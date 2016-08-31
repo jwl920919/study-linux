@@ -1,4 +1,4 @@
-# Ubuntu Setup (v14)
+# Ubuntu Setup (14.04)
 
 ### 1. Default Setting
 
