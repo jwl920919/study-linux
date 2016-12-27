@@ -50,4 +50,53 @@ vi /etc/sysconfig/network-scripts/ifcfg-eth0
 
 ==========================================
 
+### 접속 로그 분석
+
+ * 로그인 성공한 IP 보
+ 
+```
+cat /var/log/secure* | grep Accepted | awk '{print $9"\t"$11"\t"$14}' | sort | uniq
+
+ ...
+ root    121.166.104.62  ssh2
+ songagi 211.63.144.199  ssh2
+```
+
+ * IP grep
+ 
+```
+cat /var/log/secure* | grep Accepted
+```
+
+ * IP Grep (일부 IP 제외)
+
+```
+cat /var/log/secure* | grep Accepted | egrep -v "(121.166.104.62|211.63.144.199)"
+```
+
+ * 침입 시도 IP 확인
+
+```
+cat /var/log/fail2ban.log* | grep "] Ban" | awk '{print $NF}' | sort | uniq -c | sort -n
+```
+ 
+ * 접속 기록 확인(last)
+ 
+```
+last
+```
+
+ * 특정 계정 접속 확인
+```
+last userid
+```
+
+ * 특정 시각 이전 접속 확인
+ 
+ ```
+ last -t 20161212040000
+ ```
+ 
+==========================================
+
 [Back](https://github.com/songagi/study-linux/blob/master/README.md)
